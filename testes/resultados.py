@@ -50,3 +50,19 @@ with open('results/relatorio_classificacao.txt', 'w') as f:
 
 print("\n✅ Matriz de confusão salva em 'results/matriz_confusao.png'")
 print("✅ Relatório salvo em 'results/relatorio_classificacao.txt'")
+
+# Carregar dados
+df = pd.read_csv('data/limpos/Português/baseDeDados_limpo.csv')
+df.columns = df.columns.str.strip().str.lower()
+y = df['doenca']
+
+# Plotar distribuição
+plt.figure(figsize=(8,6))
+sns.countplot(x=y)
+plt.title("Distribuição das Doenças no Dataset")
+plt.xlabel("Doença")
+plt.ylabel("Quantidade")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('results/distribuicao_doencas.png')
+plt.show()

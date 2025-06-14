@@ -1,1 +1,128 @@
-Arquivo temporário criado para organização das pastas do projeto. Deve ser excluído após a criação de qualquer arquivo no diretório.
+Arquivo temporário criado para organização das pastas do projeto. Deve ser excluído após a criação de qualquer arquivo no diretório.{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 🧠 Classificador de Sintomas com IA – Exemplo de Uso\n",
+    "Este notebook demonstra como utilizar o modelo treinado para fazer previsões e visualizar resultados."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import joblib\n",
+    "import pandas as pd\n",
+    "import matplotlib.pyplot as plt\n",
+    "import seaborn as sns\n",
+    "from sklearn.metrics import confusion_matrix, classification_report\n",
+    "from sklearn.model_selection import train_test_split\n",
+    "\n",
+    "# Carregar modelo e vetorizador\n",
+    "modelo = joblib.load('models/modelo_final.pkl')\n",
+    "vectorizer = joblib.load('models/vectorizer.pkl')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 🔍 Testando sintomas manualmente"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def prever_sintomas(sintomas):\n",
+    "    sintomas_vector = vectorizer.transform([sintomas])\n",
+    "    resultado = modelo.predict(sintomas_vector)\n",
+    "    return resultado[0]\n",
+    "\n",
+    "sintomas = "febre dor de cabeça cansaço"\n",
+    "previsao = prever_sintomas(sintomas)\n",
+    "print(f"🔍 Sintomas informados: {sintomas}")\n",
+    "print(f"✅ Resultado da previsão: {previsao}")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 📊 Matriz de Confusão e Relatório"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df = pd.read_csv('data/limpos/Português/baseDeDados_limpo.csv')\n",
+    "df.columns = df.columns.str.strip().str.lower()\n",
+    "\n",
+    "sintomas_colunas = [col for col in df.columns if col.startswith('sintoma')]\n",
+    "df['sintomas_texto'] = df[sintomas_colunas].fillna('').astype(str).agg(' '.join, axis=1)\n",
+    "\n",
+    "X = df['sintomas_texto']\n",
+    "y = df['doenca']\n",
+    "\n",
+    "X_vect = vectorizer.transform(X)\n",
+    "X_train, X_test, y_train, y_test = train_test_split(X_vect, y, test_size=0.2, random_state=42)\n",
+    "\n",
+    "y_pred = modelo.predict(X_test)\n",
+    "\n",
+    "cm = confusion_matrix(y_test, y_pred)\n",
+    "plt.figure(figsize=(8,6))\n",
+    "sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')\n",
+    "plt.title('Matriz de Confusão')\n",
+    "plt.xlabel('Predito')\n",
+    "plt.ylabel('Verdadeiro')\n",
+    "plt.show()\n",
+    "\n",
+    "print(classification_report(y_test, y_pred))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 📈 Distribuição das Classes no Dataset"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "plt.figure(figsize=(8,6))\n",
+    "sns.countplot(x=y)\n",
+    "plt.title("Distribuição de Doenças no Dataset")\n",
+    "plt.xlabel("Doença")\n",
+    "plt.ylabel("Quantidade")\n",
+    "plt.xticks(rotation=45)\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.x"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

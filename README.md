@@ -59,6 +59,22 @@ Isso abrirá a aplicação no navegador, permitindo entrada de sintomas e previs
 
 ## 📊 Resultados Obtidos
 
+O modelo foi avaliado utilizando Naive Bayes com vetorização de texto, apresentando os seguintes resultados:
+
+- ✅ **Acurácia:** 85% (exemplo, preencher com o valor real)
+- ✅ **Precisão, Recall e F1-score:** Conforme relatório gerado.
+
+### 🔹 Matriz de Confusão:
+![Matriz de Confusão](results/matriz_confusao.png)
+
+### 🔹 Distribuição de Doenças no Dataset:
+![Distribuição de Doenças](results/distribuicao_doencas.png)
+
+### 🔹 Exemplo de Uso:
+- 🔍 Entrada: `febre dor de cabeça cansaço`
+- ✅ Saída: `Dengue` (Exemplo)
+
+> O modelo funciona tanto via interface Streamlit quanto via script ou notebook.
 
 
 ## 👥 Créditos
