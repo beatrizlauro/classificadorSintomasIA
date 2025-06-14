@@ -1,2 +1,7 @@
 pandas
 unicode
+scikit-learn
+joblib
+matplotlib
+seaborn
+streamlit
