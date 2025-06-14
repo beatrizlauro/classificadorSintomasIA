@@ -17,7 +17,45 @@ Este sistema visa:
 
 ## ▶️ Instruções de Execução
 
+### 1️⃣ Instalação
+1️⃣ Instalação
+Certifique-se de ter Python 3.6 ou superior instalado.
 
+Clone este repositório:
+
+bash
+git clone https://github.com/beatrizlauro/classificadorSintomasIA.git
+cd seu-repositorio
+(Opcional) Ative um ambiente virtual:
+
+Windows:
+
+bash
+python -m venv env
+env\Scripts\activate
+macOS / Linux:
+
+bash
+python3 -m venv env
+source env/bin/activate
+Instale as dependências:
+
+bash
+pip install -r requirements.txt
+2️⃣ Estrutura do Projeto
+bash
+📂 interface/     # Interface com o usuário usando Streamlit
+📂 models/        # Modelos treinados (.pkl)
+  ├── modelo_final.pkl
+  └── vectorizer.pkl
+📂 data/          # Base de dados para treinamento
+📂 scripts/       # Scripts para pré-processamento e treino
+🚀 3. Executando a Interface
+Após garantir que os arquivos do modelo modelo_final.pkl e vectorizer.pkl estão na pasta models/, execute:
+
+bash
+streamlit run interface/interface.py
+Isso abrirá a aplicação no navegador, permitindo entrada de sintomas e previsão de doenças.
 
 ## 📊 Resultados Obtidos
 
