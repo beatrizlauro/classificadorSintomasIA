@@ -21,7 +21,22 @@ sintomas_usuario = st.text_area("📝 Sintomas:", "")
 if st.button("🔍 Classificar"):
     if sintomas_usuario.strip():
         sintomas_vetorizados = vectorizer.transform([sintomas_usuario])
-        previsao = modelo.predict(sintomas_vetorizados)
-        st.success(f"**Possível diagnóstico:** {previsao[0]}")
+        
+        # Obter as probabilidades de cada doença
+        probabilidades = modelo.predict_proba(sintomas_vetorizados)[0]
+        
+        # Combinar classes e probabilidades
+        doencas_com_prob = list(zip(modelo.classes_, probabilidades))
+        
+        # Ordenar por probabilidade decrescente
+        doencas_ordenadas = sorted(doencas_com_prob, key=lambda x: x[1], reverse=True)
+        
+        # Montar texto com as top 5 doenças e porcentagens, formatado para exibir no st.success
+        resultados_texto = "\n".join(
+            f"{doenca.replace('_', ' ')};"
+            for doenca, prob in doencas_ordenadas[:5]
+        )
+        
+        st.success(f"Possíveis diagnósticos:\n{resultados_texto}")
     else:
         st.warning("⚠️ Por favor, insira sintomas antes de classificar.")
