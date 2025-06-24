@@ -37,6 +37,8 @@ plt.title(' Matriz de Confusão')
 plt.xlabel('Predito')
 plt.ylabel('Verdadeiro')
 plt.tight_layout()
+import os
+os.makedirs('results', exist_ok=True)
 plt.savefig('results/matriz_confusao.png')  # Salva como imagem
 plt.show()
 
