@@ -1,81 +1,133 @@
-# 🧠 Classificador de Sintomas com IA
+# Classificador de Sintomas com IA
 
-## 📌 Objetivo
+Este projeto implementa um classificador de doenças a partir de descrições de sintomas em texto, utilizando técnicas de processamento de linguagem natural (NLP) e modelos de aprendizado de máquina.
 
-O projeto **Classificador de Sintomas com IA** tem como principal objetivo auxiliar no diagnóstico preliminar de condições de saúde com base nos sintomas relatados pelo usuário. A ideia é criar uma ferramenta inteligente, acessível e fácil de usar, que possa ser utilizada por qualquer pessoa para obter uma sugestão de possível condição clínica antes de buscar atendimento médico profissional.
+---
 
-Este sistema visa:
+## 📂 Estrutura do Projeto
 
-- Reduzir o tempo de decisão entre perceber sintomas e procurar ajuda médica.
-- Oferecer uma base educacional sobre possíveis condições relacionadas a certos sintomas.
-- Demonstrar, na prática, a aplicação de conceitos de Inteligência Artificial no domínio da saúde.
+```
+classificadorSintomasIA/
+├── data/
+│   ├── brutos/               # Dados originais em inglês e português
+│   └── limpos/               # Dados pré-processados e limpos
+│       ├── Português/
+│       │   └── baseDeDados_limpo.csv
+│       └── Inglês/
+├── models/
+│   ├── modelo_final.pkl      # Modelo treinado serializado
+│   └── vectorizer.pkl        # Vetorizador de texto (TF-IDF)
+├── interface/
+│   └── interface.py          # Aplicação Streamlit para interação
+├── testes/
+│   ├── teste.py              # Script de testes manuais de previsão
+│   └── resultados.py         # Geração de matriz de confusão e relatório
+├── notebook/
+│   └── criacaodapasta.txt    # Scripts auxiliares de organização
+├── results/                  # Diretório de saída com gráficos e relatórios
+└── README.md
+```
 
+---
 
-## 🛠️ Tecnologias e Ferramentas Utilizadas
+## 🛠 Requisitos
 
+- Python 3.8 ou superior
+- Bibliotecas Python:
+  - pandas
+  - scikit-learn
+  - joblib
+  - matplotlib
+  - seaborn
+  - streamlit
 
+Você pode instalar todas as dependências com:
 
-## ▶️ Instruções de Execução
-
-### 1️⃣ Instalação
-1️⃣ Instalação
-Certifique-se de ter Python 3.6 ou superior instalado.
-
-Clone este repositório:
-
-bash
-git clone https://github.com/beatrizlauro/classificadorSintomasIA.git
-cd seu-repositorio
-(Opcional) Ative um ambiente virtual:
-
-Windows:
-
-bash
-python -m venv env
-env\Scripts\activate
-macOS / Linux:
-
-bash
-python3 -m venv env
-source env/bin/activate
-Instale as dependências:
-
-bash
+```bash
 pip install -r requirements.txt
-2️⃣ Estrutura do Projeto
-bash
-📂 interface/     # Interface com o usuário usando Streamlit
-📂 models/        # Modelos treinados (.pkl)
-  ├── modelo_final.pkl
-  └── vectorizer.pkl
-📂 data/          # Base de dados para treinamento
-📂 scripts/       # Scripts para pré-processamento e treino
-🚀 3. Executando a Interface
-Após garantir que os arquivos do modelo modelo_final.pkl e vectorizer.pkl estão na pasta models/, execute:
+```
 
-bash
+---
+
+## 🚀 Instalação
+
+### 1. Clone este repositório:
+   ```bash
+   git clone https://github.com/beatrizlauro/classificadorSintomasIA.git 
+   cd classificadorSintomasIA
+   ```
+
+### 2. Crie o ambiente virtual
+   ```bash
+   python -m venv venv
+   ```
+
+### 3. Ative o ambiente virtual (Linux ou MacOS)
+
+Linux:
+   ```bash
+   source venv/bin/activate
+   ```
+Windows:
+   ```bash
+   venv\Scripts\activate
+   ```
+
+### 4. Instale as dependências:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+---
+
+## 🎯 Uso
+
+### 1. Executar a interface web
+
+Inicie a aplicação Streamlit para inserir sintomas via interface gráfica:
+```bash
 streamlit run interface/interface.py
-Isso abrirá a aplicação no navegador, permitindo entrada de sintomas e previsão de doenças.
+````
 
-## 📊 Resultados Obtidos
+### 2. Testes manuais via script
 
-O modelo foi avaliado utilizando Naive Bayes com vetorização de texto, apresentando os seguintes resultados:
+Para executar testes de previsão de doenças a partir de exemplos de sintomas:
 
-- ✅ **Acurácia:** 85% (exemplo, preencher com o valor real)
-- ✅ **Precisão, Recall e F1-score:** Conforme relatório gerado.
+```bash
+python testes/teste.py
+```
 
-### 🔹 Matriz de Confusão:
-![Matriz de Confusão](results/matriz_confusao.png)
+---
 
-### 🔹 Distribuição de Doenças no Dataset:
-![Distribuição de Doenças](results/distribuicao_doencas.png)
+## 📊 Avaliação do Modelo
 
-### 🔹 Exemplo de Uso:
-- 🔍 Entrada: `febre dor de cabeça cansaço`
-- ✅ Saída: `Dengue` (Exemplo)
+O modelo foi avaliado usando 80% dos dados para treino e 20% para teste (random\_state=42). As principais métricas de desempenho obtidas foram:
 
-> O modelo funciona tanto via interface Streamlit quanto via script ou notebook.
+| Métrica                  | Valor |
+| ------------------------ | ----- |
+| **Acurácia**             | 100%  |
+| **Precisão (Macro Avg)** | 100%  |
+| **Recall (Macro Avg)**   | 100%  |
+| **F1-score (Macro Avg)** | 100%  |
 
+## 📊 Métricas de Desempenho do Modelo
+
+| Classe                                 | Precision | Recall | F1-score | Support |
+|----------------------------------------|-----------|--------|----------|---------|
+| (vertigem)_vertigem_posicional_paromsal| 1.00      | 1.00   | 1.00     | 18      |
+| acne                                   | 1.00      | 1.00   | 1.00     | 24      |
+| aids                                   | 1.00      | 1.00   | 1.00     | 30      |
+| ...                                    | ...       | ...    | ...      | ...     |
+
+### ✅ Totais
+
+- **Total de amostras:** 984  
+- **Acurácia:** 1.00  
+
+| Métrica       | Precision | Recall | F1-score | Support |
+|---------------|-----------|--------|----------|---------|
+| Macro média   | 1.00      | 1.00   | 1.00     | 984     |
+| Média ponderada | 1.00    | 1.00   | 1.00     | 984     |
 
 ## 👥 Créditos
 
@@ -87,3 +139,4 @@ Projeto desenvolvido por:
 - Julia Alves de Brito  
 
 Como parte da disciplina de **Inteligência Artificial** – Curso de **Sistemas de Informação**, 5º período – 2025.
+
