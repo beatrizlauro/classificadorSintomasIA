@@ -112,12 +112,49 @@ O modelo foi avaliado usando 80% dos dados para treino e 20% para teste (random\
 
 ## 📊 Métricas de Desempenho do Modelo
 
-| Classe                                 | Precision | Recall | F1-score | Support |
-|----------------------------------------|-----------|--------|----------|---------|
-| (vertigem)_vertigem_posicional_paromsal| 1.00      | 1.00   | 1.00     | 18      |
-| acne                                   | 1.00      | 1.00   | 1.00     | 24      |
-| aids                                   | 1.00      | 1.00   | 1.00     | 30      |
-| ...                                    | ...       | ...    | ...      | ...     |
+| Doença                                  | Precision | Recall | F1-Score | Support |
+|---------------------------------------- |-----------|--------|----------|---------|
+| (vertigem)_vertigem_posicional_paroxmal | 1.00      | 1.00   | 1.00     | 18      |
+| acne                                    | 1.00      | 1.00   | 1.00     | 24      |
+| aids                                    | 1.00      | 1.00   | 1.00     | 30      |
+| alergia                                 | 1.00      | 1.00   | 1.00     | 24      |
+| artrite                                 | 1.00      | 1.00   | 1.00     | 23      |
+| asma_bronquica                          | 1.00      | 1.00   | 1.00     | 33      |
+| ataque_cardiaco                         | 1.00      | 1.00   | 1.00     | 23      |
+| catapora                                | 1.00      | 1.00   | 1.00     | 21      |
+| colesterol_cronica                      | 1.00      | 1.00   | 1.00     | 15      |
+| dengue                                  | 1.00      | 1.00   | 1.00     | 26      |
+| diabetes                                | 1.00      | 1.00   | 1.00     | 21      |
+| doenca_de_ulcera_peptica                | 1.00      | 1.00   | 1.00     | 17      |
+| drge                                    | 1.00      | 1.00   | 1.00     | 28      |
+| enxaqueca                               | 1.00      | 1.00   | 1.00     | 25      |
+| espondilose_cervical                    | 1.00      | 1.00   | 1.00     | 23      |
+| gastroenterite                          | 1.00      | 1.00   | 1.00     | 25      |
+| gripe_comum                             | 1.00      | 1.00   | 1.00     | 23      |
+| hemorroidas_dimorficas_(pilhas)         | 1.00      | 1.00   | 1.00     | 25      |
+| hepatite_a                              | 1.00      | 1.00   | 1.00     | 34      |
+| hepatite_alcoolica                      | 1.00      | 1.00   | 1.00     | 26      |
+| hepatite_b                              | 1.00      | 1.00   | 1.00     | 29      |
+| hepatite_c                              | 1.00      | 1.00   | 1.00     | 27      |
+| hepatite_d                              | 1.00      | 1.00   | 1.00     | 23      |
+| hepatite_e                              | 1.00      | 1.00   | 1.00     | 23      |
+| hipertensao                             | 1.00      | 1.00   | 1.00     | 25      |
+| hipertiroidismo                         | 1.00      | 1.00   | 1.00     | 24      |
+| hipoglicemia                            | 1.00      | 1.00   | 1.00     | 21      |
+| hipotiroidismo                          | 1.00      | 1.00   | 1.00     | 26      |
+| ictericia                               | 1.00      | 1.00   | 1.00     | 20      |
+| impetigo                                | 1.00      | 1.00   | 1.00     | 24      |
+| infeccao_do_trato_urinario              | 1.00      | 1.00   | 1.00     | 26      |
+| infeccao_fungica                        | 1.00      | 1.00   | 1.00     | 19      |
+| malaria                                 | 1.00      | 1.00   | 1.00     | 22      |
+| osteoartrite                            | 1.00      | 1.00   | 1.00     | 20      |
+| paralisia_(hemorragia_cerebral)         | 1.00      | 1.00   | 1.00     | 19      |
+| pneumonia                               | 1.00      | 1.00   | 1.00     | 28      |
+| psoriase                                | 1.00      | 1.00   | 1.00     | 24      |
+| reacao_medicamentosa                    | 1.00      | 1.00   | 1.00     | 25      |
+| tifoide                                 | 1.00      | 1.00   | 1.00     | 19      |
+| tuberculose                             | 1.00      | 1.00   | 1.00     | 20      |
+| varizes                                 | 1.00      | 1.00   | 1.00     | 22      |
 
 ### ✅ Totais
 
